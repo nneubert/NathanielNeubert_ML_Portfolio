@@ -1,11 +1,11 @@
 import streamlit as st
 from openai import OpenAI
-import certifi
-import os
+# import certifi
+# import os
 import pinecone
 from pinecone import Pinecone, ServerlessSpec
 
-os.environ["SSL_CERT_FILE"] = certifi.where()
+# os.environ["SSL_CERT_FILE"] = certifi.where()
 st.set_page_config(page_title="Coin Cleaning Consultant", page_icon="🪙")
 st.title("🪙 Coin Cleaning Consultant")
 

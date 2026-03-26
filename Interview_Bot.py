@@ -1,7 +1,7 @@
 import streamlit as st
 from openai import OpenAI
-import certifi
-import os
+#import certifi
+# import os
 
 st.set_page_config(page_title="Streamlit Chat", page_icon="💬")
 st.title("Chatbot")
@@ -59,7 +59,7 @@ if not st.session_state.setup_complete:
 if st.session_state.setup_complete and not st.session_state.feedback_shown and not st.session_state.chat_complete:
 
     # Fix SSL cert issue
-    os.environ["SSL_CERT_FILE"] = certifi.where()
+    # os.environ["SSL_CERT_FILE"] = certifi.where()
 
     # Initialize client
     client = st.session_state.client
