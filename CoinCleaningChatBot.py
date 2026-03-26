@@ -25,7 +25,7 @@ SYSTEM_PROMPT   = """You are an expert ancient coin cleaning and artifact conser
 Answer questions using the context passages provided below each user message.
 If the context doesn't contain enough information to answer confidently, ask
 the user for clarification rather than guessing. Always cite which source
-(document name and author) informed your answer."""
+(document name and author) informed your answer. Don't ask for photos"""
 
 if "messages" not in st.session_state:
     st.session_state.messages = [
