@@ -16,6 +16,8 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "chat_complete" not in st.session_state:
     st.session_state.chat_complete = False
+if "client" not in st.session_state:
+    st.session_state.client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def complete_setup():
     st.session_state.setup_complete = True
@@ -32,8 +34,6 @@ if not st.session_state.setup_complete:
     st.text_input("Name", key="name", max_chars=40, placeholder="Enter your name:")
     st.text_area("Experience", key="experiences", max_chars=200, placeholder="Describe your experience:")
     st.text_area("Skills", key="skills", max_chars=200, placeholder="List your skills")
-
-    st.write(f"**Your information**: {st.session_state['name']} {st.session_state['experiences']} at {st.session_state['skills']}")
 
     st.subheader('Company and Position', divider='blue')
 
@@ -53,8 +53,6 @@ if not st.session_state.setup_complete:
 
     st.selectbox("Choose a Company:", ("Amazon", "Meta", "SpaceX", "Nestle", "LinkedIn", "Spotify"), key='company')
 
-    st.write(f"**Your information**: {st.session_state['level']} {st.session_state['position']} at {st.session_state['company']}")
-
     if st.button("Start Interview", on_click=complete_setup):
         st.write("Setup complete. Starting interview...")
 
@@ -64,7 +62,7 @@ if st.session_state.setup_complete and not st.session_state.feedback_shown and n
     os.environ["SSL_CERT_FILE"] = certifi.where()
 
     # Initialize client
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    client = st.session_state.client
 
     # Session state defaults
     if "openai_model" not in st.session_state:
@@ -115,7 +113,7 @@ if st.session_state.chat_complete and not st.session_state.feedback_shown:
 if st.session_state.feedback_shown:
     conversation_history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in st.session_state.messages])
 
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    client = st.session_state.client
     feedback_completion = client.responses.create(
         model="gpt-5-nano",
         input=[

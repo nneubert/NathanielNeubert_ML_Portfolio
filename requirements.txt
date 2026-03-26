@@ -8,3 +8,5 @@ tiktoken
 langchain
 langchain-openai
 certifi
+pinecone
+os
