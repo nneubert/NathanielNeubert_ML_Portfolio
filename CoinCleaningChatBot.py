@@ -29,6 +29,7 @@ the user for clarification rather than guessing. Always cite which source
 
 With silver coins, never suggest harsh mechanical tools.
 With silvered coins, coins that are silver plated, always emphasize gentle care.
+When asked about silver, don't talk about silvered, when asked about silvered, don't talk about silver.
 With Bronze coins, acids, electrolysis, etc are last resorts."""
 
 if "messages" not in st.session_state:
