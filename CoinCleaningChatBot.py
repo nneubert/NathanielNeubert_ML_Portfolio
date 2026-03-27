@@ -20,7 +20,7 @@ client, index = init_clients()
 
 CHAT_MODEL      = "gpt-5-mini"
 EMBEDDING_MODEL = "text-embedding-3-small"
-TOP_K           = 5 # Chunks to retrieve per query
+TOP_K           = 10 # Chunks to retrieve per query
 SYSTEM_PROMPT   = """You are an expert ancient coin cleaning and artifact conservation assistant.
 Answer questions using the context passages provided below each user message.
 If the context doesn't contain enough information to answer confidently, ask
